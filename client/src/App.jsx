@@ -5,6 +5,11 @@ import Layout from './pages/Layout'
 import Dashboard from './pages/Dashboard'
 import WriteArticle from './pages/WriteArticle'
 import BlogTitle from './pages/BlogTitle'
+import GenImages from './pages/GenImages'
+import RemoveBg from './pages/RemoveBg'
+import RemoveObj from './pages/RemoveObj'
+import ReviewResume from './pages/ReviewResume'
+import Community from './pages/Community'
 
 const App = () => {
   return (
@@ -18,6 +23,11 @@ const App = () => {
           <Route index element={<Dashboard />}/>
           <Route path='write-article' element={<WriteArticle />}/>
           <Route path='blog-titles' element={<BlogTitle />}/>
+          <Route path='generate-images' element={<GenImages />}/>
+          <Route path='remove-background' element={<RemoveBg />}/>
+          <Route path='remove-object' element={<RemoveObj />}/>
+          <Route path='review-resume' element={<ReviewResume />}/>
+          <Route path='community' element={<Community />}/>
         </Route>
       </Routes>
     </div>
