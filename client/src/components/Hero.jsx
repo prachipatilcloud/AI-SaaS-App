@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets';
+import gradientBackground from '../assets/gradientBackground.png';
 
 const Hero = () => {
 
