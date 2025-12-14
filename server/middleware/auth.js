@@ -1,4 +1,5 @@
 import { clerkClient } from "@clerk/express";
+import { clerkMiddleware } from "@clerk/express";
 
 // Middleware to check userId and hasPremiumPlan
 
