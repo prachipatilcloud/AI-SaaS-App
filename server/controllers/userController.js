@@ -1,4 +1,4 @@
-import sql from "../configs/db";
+import sql from "../configs/db.js";
 
 
 
@@ -16,7 +16,7 @@ export const getUserCreations = async(req,res)=> {
         res.json({ success: false, message: error.message });
     }
 }
-export const getPublicCreations = async(req,res)=> {
+export const getPublishedCreations = async(req,res)=> {
     try {
         // const {userId} = req.auth();
 
@@ -48,12 +48,18 @@ export const toggleLikeCreations = async(req,res)=> {
 
         if(currentLikes.includes(userIdStr)){
             updatedLikes = currentLikes.filter((user) => user !== userIdStr);
-            message = 'Unliked'
+            message = 'Creation Unliked'
+        }
+        else{
+            updatedLikes = [...currentLikes, userIdStr]
+            message = 'Creation Liked'
         }
 
-        const creations = await sql`SELECT * FROM CREATIONS WHERE publish = true order by created_at desc`;
+        const formattedArray = `{${updatedLikes.join(',')}}`
 
-        res.json({ success: true, creations });
+        await sql`UPDATE CREATIONS SET likes = ${formattedArray}::text[] WHERE id = ${id}`;
+
+        res.json({ success: true, message });
 
 
     } catch (error) {
